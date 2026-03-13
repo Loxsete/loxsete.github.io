@@ -1,146 +1,542 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-  <meta charset="UTF-8">
-  <title>LOXSETE // HOMEPAGE</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
-
-  <style>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>loxsete.net :: home</title>
+  <style type="text/css">
     body {
+      background-color: #111118;
+      background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAHklEQVQI12NgYGD4z8BQDwIHDhz4zwADGAAA//8DAAMFAgMGHlU0AAAAAElFTkSuQmCC");
+      color: #c0c8d8;
+      font-family: Verdana, Tahoma, Arial, sans-serif;
+      font-size: 11px;
       margin: 0;
       padding: 0;
-      background: #00ffff;
-      color: #000;
-      font-family: 'VT323', monospace;
-      font-size: 22px;
-      line-height: 1.6;
-      text-align: center;
     }
 
-    .container {
-      max-width: 900px;
+    a { color: #88aacc; text-decoration: none; }
+    a:hover { color: #c0d8f0; text-decoration: underline; }
+    a:visited { color: #7090b0; }
+
+    #page {
+      width: 780px;
       margin: 0 auto;
-      padding: 40px 20px 80px;
+      padding: 10px 0 30px;
     }
 
-    h1 {
-      font-size: 56px;
-      color: #ffff00;
-      text-shadow:
-        3px 3px 0 #000,
-        -3px -3px 0 #000,
-        3px -3px 0 #000,
-        -3px 3px 0 #000;
-      margin-bottom: 30px;
+    #header {
+      background: #0a0a18;
+      border: 1px solid #1e2840;
+      border-bottom: none;
+      padding: 0;
+      position: relative;
+      overflow: hidden;
+      height: 90px;
     }
 
-    h2 {
-      font-size: 36px;
-      text-decoration: underline;
-      margin-top: 50px;
+    #header-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse at 60% 50%, rgba(20,40,100,0.5) 0%, transparent 65%),
+        radial-gradient(ellipse at 10% 80%, rgba(10,20,60,0.4) 0%, transparent 50%),
+        linear-gradient(180deg, #0e1428 0%, #080818 100%);
     }
 
-    .bar {
-      background: #ffff00;
-      border: 4px solid #000;
-      box-shadow: inset 0 0 0 4px #000;
-      padding: 20px;
-      margin: 40px 0;
-      font-size: 26px;
+    #header-stars {
+      position: absolute;
+      inset: 0;
     }
 
-    .bar strong {
-      font-size: 32px;
-      display: block;
-      margin-bottom: 10px;
+    #header-anime {
+      position: absolute;
+      right: 20px;
+      bottom: 0;
+      height: 200px;
+      z-index: 2;
+      filter: brightness(0.88) contrast(1.05);
     }
 
-    .section {
-      margin: 40px 0;
+    #header-text {
+      position: relative;
+      z-index: 3;
+      padding: 16px 0 0 18px;
     }
 
-    a {
-      color: #0000ff;
+    #header-text h1 {
+      font-family: Verdana, sans-serif;
+      font-size: 22px;
       font-weight: bold;
-      text-decoration: underline;
+      color: #90b8e0;
+      letter-spacing: 3px;
+      text-shadow: 0 0 12px rgba(80,140,220,0.6), 1px 1px 0 #000;
+      margin: 0 0 4px;
     }
 
-    a:hover {
-      background: #000;
-      color: #ffff00;
+    #header-text .sub {
+      font-size: 10px;
+      color: #405878;
+      letter-spacing: 2px;
     }
 
-    .list {
-      margin-top: 15px;
+    #navbar {
+      background: linear-gradient(180deg, #1a2840 0%, #0f1a2e 100%);
+      border: 1px solid #1e3050;
+      border-top: 1px solid #2a4060;
+      padding: 0;
+      display: flex;
+      gap: 0;
     }
 
-    .note {
-      margin-top: 70px;
-      font-size: 20px;
+    #navbar a {
+      display: block;
+      padding: 5px 14px;
+      color: #8ab0cc;
+      font-size: 11px;
+      font-weight: bold;
+      border-right: 1px solid #1e3050;
+      text-decoration: none;
+      text-transform: lowercase;
+    }
+
+    #navbar a:hover {
+      background: rgba(255,255,255,0.06);
+      color: #c0d8f0;
+      text-decoration: none;
+    }
+
+    #navbar a.cur {
+      background: rgba(255,255,255,0.05);
+      color: #78b0e0;
+      border-bottom: 2px solid #4080c0;
+    }
+
+    #layout {
+      display: flex;
+      gap: 8px;
+      margin-top: 8px;
+      align-items: flex-start;
+    }
+
+    #sidebar { width: 168px; flex-shrink: 0; }
+
+    .sbox {
+      border: 1px solid #1e3050;
+      margin-bottom: 7px;
+      background: #0c111e;
+    }
+
+    .sbox-title {
+      background: linear-gradient(180deg, #1e3050 0%, #152540 100%);
+      padding: 4px 8px;
+      font-size: 10px;
+      font-weight: bold;
+      color: #7aa8cc;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      border-bottom: 1px solid #1e3050;
+    }
+
+    .sbox-body { padding: 6px 0; }
+
+    .sbox-body a {
+      display: block;
+      padding: 3px 10px 3px 14px;
+      color: #8aaac0;
+      font-size: 11px;
+      border-bottom: 1px solid #0e1828;
+    }
+
+    .sbox-body a:last-child { border-bottom: none; }
+    .sbox-body a:hover { background: #0f1e30; color: #b8d0e8; text-decoration: none; }
+    .sbox-body a.cur { background: #0d1c2e; color: #60a0cc; }
+
+    .sbox-body a.sub {
+      padding-left: 22px;
+      font-size: 10px;
+      color: #506878;
+    }
+    .sbox-body a.sub::before { content: '» '; color: #304050; }
+
+    #main { flex: 1; min-width: 0; }
+
+    .panel {
+      border: 1px solid #1e3050;
+      margin-bottom: 8px;
+      background: #0c111e;
+    }
+
+    .panel-title {
+      background: linear-gradient(180deg, #223555 0%, #162840 100%);
+      padding: 5px 10px;
+      font-size: 11px;
+      font-weight: bold;
+      color: #90bcd8;
+      border-bottom: 1px solid #1e3050;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .panel-title .ico { color: #4a7aa0; font-size: 10px; }
+
+    .panel-body { padding: 10px 12px; }
+
+    .irow {
+      display: flex;
+      border-bottom: 1px solid #0e1828;
+      padding: 4px 0;
+    }
+    .irow:last-child { border-bottom: none; }
+
+    .irow .k {
+      width: 110px;
+      flex-shrink: 0;
+      color: #4a7090;
+      font-size: 11px;
+    }
+
+    .irow .v {
+      color: #a8c4d8;
+      font-size: 11px;
+    }
+
+    .irow .v em {
+      color: #405870;
       font-style: italic;
     }
 
-    .divider {
-      margin: 50px 0;
-      font-size: 24px;
+    .tag {
+      display: inline-block;
+      background: #0d1e30;
+      border: 1px solid #1e3a55;
+      color: #6090b0;
+      padding: 1px 5px;
+      font-size: 10px;
+      margin: 1px 2px 1px 0;
+      text-decoration: none;
     }
+    .tag:hover { background: #122030; color: #90c0e0; text-decoration: none; }
+
+    .ptable {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .ptable thead tr {
+      background: linear-gradient(180deg, #1a2e48 0%, #111e30 100%);
+    }
+
+    .ptable th {
+      padding: 5px 9px;
+      font-size: 10px;
+      font-weight: bold;
+      color: #5a8aaa;
+      text-align: left;
+      border-right: 1px solid #1e3050;
+      border-bottom: 1px solid #1e3050;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .ptable th:last-child { border-right: none; }
+
+    .ptable tbody tr { border-bottom: 1px solid #0e1828; }
+    .ptable tbody tr:hover td { background: #0a1620; }
+    .ptable tbody tr:nth-child(even) td { background: #0a0f1a; }
+    .ptable tbody tr:nth-child(even):hover td { background: #0a1620; }
+
+    .ptable td {
+      padding: 6px 9px;
+      font-size: 11px;
+      color: #90b0c8;
+      border-right: 1px solid #0e1828;
+      vertical-align: top;
+    }
+    .ptable td:last-child { border-right: none; }
+
+    .ptable .pn a { color: #6aaad8; font-weight: bold; }
+    .ptable .pn a:hover { text-decoration: underline; }
+    .ptable .pl { color: #405870; font-size: 10px; }
+
+    .badge {
+      display: inline-block;
+      font-size: 9px;
+      padding: 1px 5px;
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .badge.active { background: #081808; border: 1px solid #1a4020; color: #50a060; }
+    .badge.legacy { background: #181808; border: 1px solid #303018; color: #807850; }
+
+    .postbox {
+      display: flex;
+      gap: 0;
+      border-top: 1px solid #0e1828;
+    }
+
+    .post-left {
+      width: 110px;
+      flex-shrink: 0;
+      background: #090e1a;
+      border-right: 1px solid #0e1828;
+      padding: 10px 8px;
+      text-align: center;
+    }
+
+    .post-avatar {
+      width: 90px;
+      height: 110px;
+      object-fit: cover;
+      object-position: top;
+      display: block;
+      margin: 0 auto 6px;
+      border: 1px solid #1e3050;
+      filter: brightness(0.85) contrast(1.08);
+    }
+
+    .post-username {
+      font-size: 11px;
+      font-weight: bold;
+      color: #78a8cc;
+      margin-bottom: 3px;
+    }
+
+    .post-rank {
+      font-size: 9px;
+      color: #405870;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .post-right {
+      flex: 1;
+      padding: 10px 12px;
+    }
+
+    .post-right p {
+      margin-bottom: 6px;
+      color: #a0bcd0;
+      line-height: 1.6;
+    }
+
+    #footer {
+      border: 1px solid #1e3050;
+      background: linear-gradient(180deg, #0e1828 0%, #080f1a 100%);
+      padding: 7px 12px;
+      font-size: 10px;
+      color: #2a4060;
+      display: flex;
+      justify-content: space-between;
+      margin-top: 8px;
+    }
+
+    #footer a { color: #3a5878; }
+    #footer a:hover { color: #6090b0; }
+
+    ::-webkit-scrollbar { width: 6px; background: #080810; }
+    ::-webkit-scrollbar-thumb { background: #1a2a40; }
+    ::-webkit-scrollbar-thumb:hover { background: #243550; }
   </style>
 </head>
 <body>
 
-<div class="container">
+<div id="page">
 
-  <h1>LOXSETE</h1>
-
-  <div class="bar">
-    <strong>WELCOME</strong>
-    OS developer · low-level enthusiast · metal guitarist
-  </div>
-
-  <div class="section">
-    <h2>ABOUT</h2>
-    Writing operating systems for fun and pain.<br>
-    Assembly, C, schedulers, paging, filesystems.<br>
-    Retro hardware enjoyer.
-  </div>
-
-  <div class="divider">==============================</div>
-
-  <div class="section">
-    <h2>PROJECTS</h2>
-
-    <div class="list">
-      <b>QuantumKernel</b><br>
-      32-bit x86 OS, FAT32, framebuffer, exec<br>
-      <a href="https://github.com/Loxsete/QuantumKernel">GitHub</a>
-    </div>
-
-    <br>
-
-    <div class="list">
-      <b>QCC</b><br>
-      Custom C-like compiler for QuantumKernel<br>
-      <a href="https://github.com/Loxsete/QCC">GitHub</a>
-    </div>
-
-    <br>
-
-    <div class="list">
-      <b>x16-PRoS</b><br>
-      Pure 16-bit assembly OS<br>
-      <a href="https://github.com/PRoX2011/x16-PRos">GitHub</a>
+  <div id="header">
+    <div id="header-bg"></div>
+    <canvas id="header-stars" width="780" height="90"></canvas>
+    <img id="anime-img" src="https://static.wixstatic.com/media/7e9fde_b5e8e935066c4dd0ae191b3804baf5ed~mv2.png/v1/fill/w_457,h_1067,al_c,q_90,enc_avif,quality_auto/Vera_classic_landing.png" alt="" id="header-anime" />
+    <div id="header-text">
+      <h1>LOXSETE.NET</h1>
+      <div class="sub">os dev &nbsp;·&nbsp; low-level &nbsp;·&nbsp; metal</div>
     </div>
   </div>
 
-  <div class="divider">==============================</div>
+  <div id="layout">
 
-  <div class="section">
-    <h2>MUSIC</h2>
-    Electric guitar<br>
-    Black / Death / Groove Metal
+    <div id="sidebar">
+      <div class="sbox">
+        <div class="sbox-title">Navigation</div>
+        <div class="sbox-body">
+          <a href="#about" class="cur">Home</a>
+          <a href="#projects">Projects</a>
+          <a href="#" class="sub">QuantumKernel</a>
+          <a href="#" class="sub">QCC</a>
+          <a href="#" class="sub">x16-PRoS</a>
+          <a href="#music">Music</a>
+          <a href="#about">About</a>
+        </div>
+      </div>
+
+      <div class="sbox">
+        <div class="sbox-title">Contact</div>
+        <div class="sbox-body">
+          <a href="https://github.com/Loxsete" target="_blank">GitHub</a>
+          <a href="#">Email</a>
+        </div>
+      </div>
+    </div>
+
+    <div id="main">
+
+      <div class="panel" id="about">
+        <div class="panel-title">
+          <span class="ico">▪</span> About
+        </div>
+        <div class="postbox">
+          <div class="post-left">
+            <img class="post-avatar" id="avatar-img"
+              src="https://static.wixstatic.com/media/7e9fde_b5e8e935066c4dd0ae191b3804baf5ed~mv2.png/v1/fill/w_457,h_1067,al_c,q_90,enc_avif,quality_auto/Vera_classic_landing.png"
+              alt="">
+            <div class="post-username">loxsete</div>
+          </div>
+          <div class="post-right">
+            <div class="irow">
+              <div class="k">handle</div>
+              <div class="v">loxsete</div>
+            </div>
+            <div class="irow">
+              <div class="k">focus</div>
+              <div class="v">OS dev, low-level systems, retro hardware</div>
+            </div>
+            <div class="irow">
+              <div class="k">languages</div>
+              <div class="v">
+                <span class="tag">C</span><span class="tag">x86 ASM</span><span class="tag">Python</span>
+              </div>
+            </div>
+            <div class="irow">
+              <div class="k">interests</div>
+              <div class="v">
+                <span class="tag">kernels</span><span class="tag">filesystems</span>
+                <span class="tag">bootloaders</span><span class="tag">compilers</span><span class="tag">metal</span>
+              </div>
+            </div>
+            <div class="irow">
+              <div class="k">&nbsp;</div>
+              <div class="v"><em>writing operating systems for fun and pain.</em></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel" id="projects">
+        <div class="panel-title">
+          <span class="ico">▪</span> Projects
+        </div>
+        <div class="panel-body" style="padding:0;">
+          <table class="ptable">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Lang</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="pn"><a href="https://github.com/Loxsete/QuantumKernel" target="_blank">QuantumKernel</a></td>
+                <td>32-bit x86 OS. FAT32, framebuffer, ELF exec, paging, syscalls</td>
+                <td class="pl">C / ASM</td>
+                <td><span class="badge legacy">legacy</span></td>
+              </tr>
+              <tr>
+                <td class="pn"><a href="https://github.com/Loxsete/QCC" target="_blank">QCC</a></td>
+                <td>Custom C-like compiler targeting QuantumKernel userspace</td>
+                <td class="pl">C</td>
+                <td><span class="badge legacy">legacy</span></td>
+              </tr>
+              <tr>
+                <td class="pn"><a href="https://github.com/PRoX2011/x16-PRos" target="_blank">x16-PRoS</a></td>
+                <td>Pure 16-bit assembly OS, runs straight from bootsector</td>
+                <td class="pl">ASM</td>
+                <td><span class="badge active">active</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="panel" id="music">
+        <div class="panel-title">
+          <span class="ico">▪</span> Music
+        </div>
+        <div class="panel-body">
+          <div class="irow">
+            <div class="k">instrument</div>
+            <div class="v">electric guitar</div>
+          </div>
+          <div class="irow">
+            <div class="k">genres</div>
+            <div class="v">
+              <span class="tag">black metal</span><span class="tag">death metal</span><span class="tag">groove metal</span>
+            </div>
+          </div>
+          <div class="irow">
+            <div class="k">guitar inf.</div>
+            <div class="v">Chuck Schuldiner, Dimebag Darrell, Silverstein</div>
+          </div>
+          <div class="irow">
+            <div class="k">vocal inf.</div>
+            <div class="v">Chuck Schuldiner, Phil Anselmo, Shane Told (Silverstein)</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
   </div>
 
+  <div id="footer">
+    <span>loxsete.net &nbsp;·&nbsp; <a href="https://github.com/Loxsete" target="_blank">github</a></span>
+  </div>
+
+</div>
+
+<script type="text/javascript">
+(function(){
+  var c = document.getElementById('header-stars');
+  if (!c) return;
+  var ctx = c.getContext('2d');
+  var W = 780, H = 90;
+  var stars = [];
+  for (var i = 0; i < 120; i++) {
+    stars.push({
+      x: Math.random() * W,
+      y: Math.random() * H,
+      r: Math.random() * 1.2 + 0.2,
+      a: Math.random(),
+      sp: Math.random() * 0.005 + 0.002,
+      ph: Math.random() * Math.PI * 2
+    });
+  }
+  var t = 0;
+  function draw() {
+    ctx.clearRect(0, 0, W, H);
+    for (var i = 0; i < stars.length; i++) {
+      var s = stars[i];
+      var alpha = 0.25 + 0.55 * Math.sin(s.ph + t * s.sp);
+      ctx.globalAlpha = alpha;
+      ctx.fillStyle = '#a0c0e0';
+      ctx.beginPath();
+      ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+      ctx.fill();
+    }
+    ctx.globalAlpha = 1;
+    t++;
+    requestAnimationFrame(draw);
+  }
+  draw();
+})();
+
+(function(){
+  var hi = document.getElementById('header-anime');
+  var ai = document.getElementById('avatar-img');
+  hi.onerror = function() { hi.style.display = 'none'; };
+  ai.onerror = function() { ai.style.display = 'none'; };
+})();
+</script>
 </body>
 </html>
